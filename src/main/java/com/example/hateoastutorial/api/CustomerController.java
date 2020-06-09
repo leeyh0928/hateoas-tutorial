@@ -26,7 +26,12 @@ public class CustomerController {
 
     @GetMapping("/{customerId}")
     public Customer getCustomerById(@PathVariable String customerId) {
-        return customerService.getCustomerDetail(customerId);
+        Customer customer = customerService.getCustomerDetail(customerId);
+        Link link = Link.of("http://localhost:8080/spring-security-rest/api/customers/10A");
+        customer.add(link);
+        customer.add(linkTo(CustomerController.class).slash(customer.getCustomerId()).withSelfRel());
+
+        return customer;
     }
 
     @GetMapping("/{customerId}/{orderId}")
