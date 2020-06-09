@@ -1,0 +1,9 @@
+GET http://localhost:8080/customers/10A
+
+###
+GET http://localhost:8080/customers/10A/orders
+
+###
+GET http://localhost:8080/customers
+
+###
